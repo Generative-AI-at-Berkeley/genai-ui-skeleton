@@ -52,7 +52,9 @@ export const dialog = defineSlotRecipe({
     },
     content: {
       "--dialog-z-index": "zIndex.modal",
-      bg: "gray.surface.bg",
+      // Opaque app.surface, not `gray.surface.bg`: that token is a 2% alpha
+      // tint, so a dialog over the page read as having no background.
+      bg: "app.surface",
       borderRadius: "l3",
       boxShadow: "lg",
       display: "flex",
