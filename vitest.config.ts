@@ -1,0 +1,17 @@
+import react from "@vitejs/plugin-react";
+import { defineConfig } from "vitest/config";
+
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: "jsdom",
+    setupFiles: ["./tests/setup.ts"],
+    include: ["tests/**/*.test.tsx", "tests/**/*.test.ts"],
+  },
+  resolve: {
+    alias: {
+      "@": new URL("./src", import.meta.url).pathname,
+      "styled-system": new URL("./styled-system", import.meta.url).pathname,
+    },
+  },
+});
